@@ -1,6 +1,7 @@
 import { Image, Text, View } from "react-native";
 
 interface CardProps {
+    id: number,
     title: string;
     image: string;
     description: string;

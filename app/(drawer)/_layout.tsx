@@ -13,7 +13,6 @@ export default function TabLayout() {
   const navigation = useNavigation();
 
   const options = {
-    drawerLabel: 'Início',
     headerTitle: () =>
       <Image source={require('../../assets/images/download.png')}
         resizeMode='contain'
@@ -29,14 +28,11 @@ export default function TabLayout() {
       <Drawer>
         <Drawer.Screen
           name="index"
-          options={options}
+          options={{ ...options, drawerLabel: 'Início', }}
         />
         <Drawer.Screen
-          name="explore"
-          options={{
-            drawerLabel: 'Gerenciar cursos',
-            title: 'Gerenciar cursos',
-          }}
+          name="manageCourses"
+          options={{ ...options, drawerLabel: 'Gerenciar cursos', }}
         />
       </Drawer>
     </GestureHandlerRootView>
