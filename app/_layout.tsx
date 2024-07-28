@@ -31,6 +31,7 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
         <Stack.Screen name="course"/>
+        <Stack.Screen name="newCourse"/>
         <Stack.Screen name="+not-found" />
       </Stack>
     </ThemeProvider>
