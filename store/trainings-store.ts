@@ -5,12 +5,18 @@ enum Roles {
     USER = "user",
 }
 
+interface ExtraMaterials {
+  placeholder: string,
+  url: string
+}
+
 interface Aula {
   url: string,
   title: string,
   description: string,
-  extraMaterials: string[]
+  extraMaterials: ExtraMaterials[]
 }
+
 
 interface Questions {
   content: string
@@ -18,6 +24,7 @@ interface Questions {
 
 interface Questionario {
   id: number;
+  title: string;
   question: string,
   options: Questions[]
 }
@@ -25,7 +32,8 @@ interface Questionario {
 interface Lesson {
   id: number;
   title: string;
-  type: Aula | Questionario,
+  lesson?: Aula,
+  questions?: Questionario
 }
 
 interface Modules {
@@ -60,12 +68,19 @@ export const useTrainingsStore = create<TrainingStore>((set) => ({
       lessons: [{
         id: 1,
         title: "Lesson 1",
-        type: {
-          url: 'exemplo.com',
+        lesson: {
           title: "Aula 1",
-          description: "Teste",
-          extraMaterials: ['Teste', "Testando"]
-        },
+          description: "Aula 1 descricao",
+          extraMaterials: [{
+            placeholder: "Material 1",
+            url: 'www.material1.com'
+          },
+          {
+            placeholder: "Material 2",
+            url: 'www.material2.com'
+          }],
+          url: 'teste.com'
+        }
       }]
     }]
   }],
