@@ -3,7 +3,6 @@ import { View, Text, TouchableOpacity, Modal } from "react-native";
 import { Link } from "expo-router";
 import { useTrainingsStore } from "@/store/trainings-store";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import Video from "react-native-video";
 
 export default function Course() {
   const [isMapOpen, setIsMapOpen] = useState(false);
@@ -39,13 +38,6 @@ export default function Course() {
         </View>
 
         <View className="bg-gray-500 w-full h-1/3">
-          <Video
-            source={{ uri: trainings[0].modules[0].lessons[0].lesson?.url }}
-            controls={true}
-            className="w-full h-full"
-            resizeMode="contain"
-            onError={(e) => console.log("Error:", e)}
-          />
         </View>
         <View className="bg-gray-200 w-full h-full p-5">
           <View className="flex justify-center border-b-[.5px] mb-1">
@@ -97,9 +89,8 @@ export default function Course() {
               <View key={index}>
                 <Text
                   onPress={() => handleModuleClick(index)}
-                  className={`p-1 ${
-                    openedModules[index] ? "bg-zinc-200" : "bg-white"
-                  }`}
+                  className={`p-1 ${openedModules[index] ? "bg-zinc-200" : "bg-white"
+                    }`}
                 >
                   {module.name}
                 </Text>
