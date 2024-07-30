@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Modal } from "react-native";
+import React, { useRef, useState } from "react";
+import { View, Text, TouchableOpacity, Modal, Button } from "react-native";
 import { Link } from "expo-router";
 import { useTrainingsStore } from "@/store/trainings-store";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import VideoPlayer from "@/components/videoPlayer";
 
 export default function Course() {
   const [isMapOpen, setIsMapOpen] = useState(false);
@@ -39,7 +40,9 @@ export default function Course() {
           </TouchableOpacity>
         </View>
 
-        <View className="bg-gray-500 w-full h-1/3"></View>
+        <View className="bg-gray-500 w-full h-1/3">
+          <VideoPlayer/>
+        </View>
         <View className="bg-gray-200 w-full h-full p-5">
           <View className="flex justify-center border-b-[.5px] mb-1">
             <Text className="mb-2 font-bold text-zinc-700 text-lg">
