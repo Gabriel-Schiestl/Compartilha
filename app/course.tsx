@@ -6,6 +6,8 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function Course() {
   const [isMapOpen, setIsMapOpen] = useState(false);
+  const [checked, setChecked] = React.useState(true);
+  const toggleCheckbox = () => setChecked(!checked);
   const [openedModules, setOpenedModules] = useState<{
     [key: number]: boolean;
   }>({});
@@ -37,8 +39,7 @@ export default function Course() {
           </TouchableOpacity>
         </View>
 
-        <View className="bg-gray-500 w-full h-1/3">
-        </View>
+        <View className="bg-gray-500 w-full h-1/3"></View>
         <View className="bg-gray-200 w-full h-full p-5">
           <View className="flex justify-center border-b-[.5px] mb-1">
             <Text className="mb-2 font-bold text-zinc-700 text-lg">
@@ -80,29 +81,36 @@ export default function Course() {
           <View className="w-full h-full bg-white rounded-lg">
             <TouchableOpacity
               onPress={handleClick}
-              className="flex flex-row justify-between items-center bg-primary p-1"
+              className="flex flex-row justify-between items-center bg-primary p-2"
             >
-              <Ionicons name="arrow-back" size={16} className="text-white" />
-              <Text>{trainings[0].name}</Text>
+              <Ionicons name="arrow-back" size={16} color={"#FFF"} />
+              <Text className="text-white text-xl">{trainings[0].name}</Text>
             </TouchableOpacity>
             {trainings[0].modules.map((module, index) => (
-              <View key={index}>
+              <View key={index} className="">
                 <Text
                   onPress={() => handleModuleClick(index)}
-                  className={`p-1 ${openedModules[index] ? "bg-zinc-200" : "bg-white"
-                    }`}
+                  className={`p-2 text-base ${
+                    openedModules[index] ? "bg-zinc-200" : "bg-white"
+                  }`}
                 >
                   {module.name}
                 </Text>
                 {openedModules[index] ? (
-                  <View className="px-3 py-1">
+                  <View className="px-5 py-1">
                     {module.lessons.map((lesson, lessonIndex) => (
                       <View key={lessonIndex}>
                         {lesson.lesson ? (
-                          <Text>{lesson.lesson?.title}</Text>
+                          <View>
+                            <Text className="text-base">
+                              {lesson.lesson?.title}
+                            </Text>
+                          </View>
                         ) : null}
                         {lesson.questions ? (
-                          <Text>{lesson.questions?.title}</Text>
+                          <View>
+                            <Text>{lesson.questions?.title}</Text>
+                          </View>
                         ) : null}
                       </View>
                     ))}
