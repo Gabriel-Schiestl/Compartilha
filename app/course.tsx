@@ -40,7 +40,7 @@ export default function Course() {
           </TouchableOpacity>
         </View>
 
-        <View className="bg-gray-500 w-full h-1/3">
+        <View className="bg-gray-500 w-full h-[200px]">
           <VideoPlayer/>
         </View>
         <View className="bg-gray-200 w-full h-full p-5">
